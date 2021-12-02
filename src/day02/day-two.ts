@@ -8,7 +8,7 @@ export class DayTwo {
 
     private commands: string[] = ['forward 5', 'down 5', 'forward 8', 'up 3', 'down 8', 'forward 2' ];
 
-    runA() {
+    run() {
         let position = new Position();
 
         for (const command of  this.commands) {

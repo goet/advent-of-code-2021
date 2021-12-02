@@ -10,4 +10,4 @@ import { DayTwo } from './day02/day-two';
 
 const dayTwo = new DayTwo();
 dayTwo.parseData();
-dayTwo.runA();
+dayTwo.run();

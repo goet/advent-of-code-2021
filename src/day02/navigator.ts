@@ -8,11 +8,12 @@ export class Navigator {
 
         if (verb === 'forward') {
             position.horizontal += value;
+            position.depth += position.aim * value;
         }
         else
         {
             const direction = verb === 'down' ? 1 : -1;
-            position.depth += direction * value;
+            position.aim += direction * value;
         }
 
         return position;
