@@ -14,6 +14,7 @@ export class DayThree {
         const vars = this.bitCounter.calculatePowerVars(this.values, this.bitLength);
         console.log(vars);
         console.log(vars.consumption());
+        console.log(this.bitCounter.findO2GenRating(this.values, this.bitLength));
     }
 
     loadData(path: string) {

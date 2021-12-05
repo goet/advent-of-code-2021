@@ -19,10 +19,33 @@ export class BitCounter {
         return vars;
     }
 
+    findO2GenRating(values: number[], bitLength: number): number {
+        let buffer = [...values];
+        for (let i = bitLength; i >= 0; i--) {
+            if (buffer.length === 1) {
+                return buffer[0];
+            }
+
+            const mostCommon = this.findMostCommonAtIndex(buffer, i);
+            buffer = buffer.filter((value) => {
+                return this.findBitAtIndex(value, i) === mostCommon;
+            });
+            console.log(`most common: ${mostCommon}`)
+            let test = '[';
+            buffer.forEach(value => {
+                test += value.toString(2) + ' ';
+            });
+            test += ']';
+            console.log(test);
+        }
+
+        return buffer[0];
+    }
+
     findMostCommonAtIndex(values: number[], index: number): number {
         const buffer = this.createBuffer(values, index);
         const breakingPoint = values.length / 2;
-        return buffer > breakingPoint ? 1 : 0;
+        return buffer >= breakingPoint ? 1 : 0;
     }
 
     findLeastCommonAtIndex(values: number[], index: number): number {
