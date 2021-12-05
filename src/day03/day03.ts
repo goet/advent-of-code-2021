@@ -2,8 +2,10 @@ import { readFileSync } from 'fs';
 import { BitCounter } from './bitcounter';
 
 export class DayThree {
+    public readonly testDataPath = 'src/day03/testData.txt';
+    public readonly dataPath = 'src/day03/data.txt';
+
     private readonly bitCounter = new BitCounter();
-    private readonly testDataPath = 'src/day03/testData.txt';
 
     private values: number[];
     private bitLength: number = -1;;
@@ -14,8 +16,8 @@ export class DayThree {
         console.log(vars.consumption());
     }
 
-    loadTestData() {
-        const input = readFileSync(this.testDataPath).toString();
+    loadData(path: string) {
+        const input = readFileSync(path).toString();
         this.values = new Array<number>();
         for (const line of input.split(/\r?\n/)) {
             this.values.push(parseInt(line, 2));

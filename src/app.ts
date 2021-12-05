@@ -14,5 +14,5 @@ import { DayThree } from './day03/day03';
 // dayTwo.run();
 
 const dayThree = new DayThree();
-dayThree.loadTestData();
+dayThree.loadData(dayThree.dataPath);
 dayThree.run();
