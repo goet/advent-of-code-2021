@@ -1,26 +1,44 @@
+import { PowerVariables } from './power-variables';
+
 export class BitCounter {
 
-    findMostCommonInData(values: number[], bitlength: number): number {
-        let buffer = 0;
+    calculatePowerVars(values: number[], bitlength: number): PowerVariables {
+        const vars = new PowerVariables();
 
         for (let i = bitlength; i >= 0; i--) {
-            let result = this.findMostCommonInDataAtIndex(values, i);
-            result <<= i;
-            buffer += result;
+            let gammaBit = this.findMostCommonAtIndex(values, i);
+            gammaBit <<= i;
+
+            let epsilonBit = this.findLeastCommonAtIndex(values, i);
+            epsilonBit <<= i;
+
+            vars.gamma += gammaBit;
+            vars.epsilon += epsilonBit;
         }
 
-        return buffer;
+        return vars;
     }
 
-    findMostCommonInDataAtIndex(values: number[], index: number): number {
+    findMostCommonAtIndex(values: number[], index: number): number {
+        const buffer = this.createBuffer(values, index);
+        const breakingPoint = values.length / 2;
+        return buffer > breakingPoint ? 1 : 0;
+    }
+
+    findLeastCommonAtIndex(values: number[], index: number): number {
+        const buffer = this.createBuffer(values, index);
+        const breakingPoint = values.length / 2;
+        return buffer < breakingPoint ? 1 : 0;
+    }
+
+    createBuffer(values: number[], index: number): number {
         let buffer = 0;
 
         for (const value of values) {
             buffer += this.findBitAtIndex(value, index);
         }
 
-        const breakingPoint = values.length / 2;
-        return buffer > breakingPoint ? 1 : 0;
+        return buffer;
     }
 
     findBitAtIndex(value: number, index: number): number {

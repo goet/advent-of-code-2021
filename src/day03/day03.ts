@@ -9,7 +9,9 @@ export class DayThree {
     private bitLength: number = -1;;
 
     run() {
-        console.log(this.bitCounter.findMostCommonInData(this.values, this.bitLength));
+        const vars = this.bitCounter.calculatePowerVars(this.values, this.bitLength);
+        console.log(vars);
+        console.log(vars.consumption());
     }
 
     loadTestData() {
