@@ -1,20 +1,22 @@
 import { readFileSync } from 'fs';
-import { BitCounter } from './bitcounter';
+import { DiagnosticsParser } from './diagnostics';
 
 export class DayThree {
     public readonly testDataPath = 'src/day03/testData.txt';
     public readonly dataPath = 'src/day03/data.txt';
 
-    private readonly bitCounter = new BitCounter();
+    private readonly diagnostics = new DiagnosticsParser();
 
     private values: number[];
     private bitLength: number = -1;;
 
     run() {
-        const vars = this.bitCounter.calculatePowerVars(this.values, this.bitLength);
-        console.log(vars);
-        console.log(vars.consumption());
-        console.log(this.bitCounter.findO2GenRating(this.values, this.bitLength));
+        const power = this.diagnostics.calculatePowerVars(this.values, this.bitLength);
+        console.log(power);
+        console.log(power.consumption());
+        const lifeSupport = this.diagnostics.findLifeSupportData(this.values, this.bitLength);
+        console.log(lifeSupport);
+        console.log(lifeSupport.rating());
     }
 
     loadData(path: string) {
