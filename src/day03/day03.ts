@@ -4,6 +4,7 @@ import { DiagnosticsParser } from './diagnostics';
 export class DayThree {
     public readonly testDataPath = 'src/day03/testData.txt';
     public readonly dataPath = 'src/day03/data.txt';
+    public readonly data2Path = 'src/day03/data2.txt';
 
     private readonly diagnostics = new DiagnosticsParser();
 
