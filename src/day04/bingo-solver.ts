@@ -11,9 +11,7 @@ export class BingoSolver {
     lookForBingo(bingoBoards: BingoBoard[]): BingoBoard | null {
         for (const board of bingoBoards) {
             const bingo = this.checkHorizontal(board)
-                    || this.checkVertical(board)
-                    || this.checkDiagonal(board)
-                    || this.checkReverseDiagonal(board);
+                    || this.checkVertical(board);
             
             if (bingo) {
                 return board;
@@ -41,11 +39,11 @@ export class BingoSolver {
 
     private checkVertical(bingoBoard: BingoBoard): boolean {
         for (let x = 0; x < 5; x++) {
-            const bingo = bingoBoard.board[x][0].marked
-                && bingoBoard.board[x][1].marked
-                && bingoBoard.board[x][2].marked
-                && bingoBoard.board[x][3].marked
-                && bingoBoard.board[x][4].marked
+            const bingo = bingoBoard.board[0][x].marked
+                && bingoBoard.board[1][x].marked
+                && bingoBoard.board[2][x].marked
+                && bingoBoard.board[3][x].marked
+                && bingoBoard.board[4][x].marked
 
             if (bingo) {
                 return true;

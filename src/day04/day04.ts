@@ -16,9 +16,9 @@ export class DayFour {
             const bingo = this.bingoSolver.lookForBingo(this.bingoBoards);
 
             if (bingo) {
-                console.log("===WINNER===")
+                console.log("===WINNER===");
                 bingo.print();
-                console.log(`score: ${bingo.score(number)}`)
+                console.log(`score: ${bingo.score(number)}`);
                 return;
             }
         }

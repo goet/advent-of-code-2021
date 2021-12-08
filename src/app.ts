@@ -1,3 +1,4 @@
+import { readFileSync } from 'fs';
 import { DayOne } from './day01/day-one';
 import { DayTwo } from './day02/day-two';
 import { DayThree } from './day03/day03';
@@ -19,5 +20,5 @@ import { DayFour } from './day04/day04';
 // dayThree.run();
 
 const dayFour = new DayFour();
-dayFour.loadData('src/day04/test-data.txt');
+dayFour.loadData('src/day04/data.txt');
 dayFour.run();

@@ -1,4 +1,4 @@
 export class BingoCell {
     number: number;
-    marked: boolean;
+    marked: boolean = false;
 }

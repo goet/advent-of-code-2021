@@ -22,7 +22,7 @@ export class BingoBoard {
                 }
             })
         }
-
+        console.log(sum);
         return sum * lastCall;
     }
 
@@ -34,6 +34,7 @@ export class BingoBoard {
                 display += cell.number.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
                 display += cell.marked ? ')' : ' ';
             }
+            display += '\n';
             console.log(display);
         }
     }
