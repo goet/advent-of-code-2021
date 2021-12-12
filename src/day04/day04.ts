@@ -24,6 +24,33 @@ export class DayFour {
         }
     }
 
+    run2() {
+        let bingo: BingoBoard;
+        let lastBingoCall: number;
+        for (const number of this.drawnNumbers) {
+            this.bingoSolver.mark(number, this.bingoBoards);
+
+
+            let lastWinner = this.bingoSolver.lookForBingo(this.bingoBoards);
+
+            while (lastWinner) {
+                this.bingoBoards.forEach((item, index) => {
+                    if (item === lastWinner) {
+                        this.bingoBoards.splice(index, 1);
+                    }
+                });
+                lastBingoCall = number;
+                bingo = lastWinner;
+
+                lastWinner = this.bingoSolver.lookForBingo(this.bingoBoards);
+            }
+        }
+
+        console.log("===LAST WINNER===");
+        bingo.print();
+        console.log(`score: ${bingo.score(lastBingoCall)}`);
+    }
+
     loadData(path: string) {
         const input = readFileSync(path).toString();
         const lines = input.split(/\r?\n/);
@@ -33,7 +60,7 @@ export class DayFour {
 
         for (let i = 2; i < lines.length; i += 6) {
             if (lines[i] !== '') {
-                const boardInput = [lines[i], lines[i+1], lines[i+2], lines[i+3], lines[i+4]];
+                const boardInput = [lines[i], lines[i + 1], lines[i + 2], lines[i + 3], lines[i + 4]];
 
                 const bingoBoard = this.parseBingoBoard(boardInput);
                 this.bingoBoards.push(bingoBoard);

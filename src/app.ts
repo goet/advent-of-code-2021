@@ -20,5 +20,5 @@ import { DayFour } from './day04/day04';
 // dayThree.run();
 
 const dayFour = new DayFour();
-dayFour.loadData('src/day04/data.txt');
-dayFour.run();
+dayFour.loadData('src/day04/test-data.txt');
+dayFour.run2();
